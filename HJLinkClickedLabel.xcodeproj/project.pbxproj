@@ -16,6 +16,8 @@
 		30DC19A41C5896A100B3920C /* HJAttributeTextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 30DC19A31C5896A100B3920C /* HJAttributeTextModel.m */; };
 		30DC19A71C58986100B3920C /* HJContentTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30DC19A61C58986100B3920C /* HJContentTextView.m */; };
 		30DC19A91C589A0500B3920C /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 30DC19A81C589A0500B3920C /* share.png */; };
+		30DC19AF1C589E5200B3920C /* HJPresentListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30DC19AC1C589E5200B3920C /* HJPresentListView.m */; };
+		30DC19B01C589E5200B3920C /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 30DC19AE1C589E5200B3920C /* UIView+Extension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,10 @@
 		30DC19A51C58986100B3920C /* HJContentTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJContentTextView.h; sourceTree = "<group>"; };
 		30DC19A61C58986100B3920C /* HJContentTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJContentTextView.m; sourceTree = "<group>"; };
 		30DC19A81C589A0500B3920C /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		30DC19AB1C589E5200B3920C /* HJPresentListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJPresentListView.h; sourceTree = "<group>"; };
+		30DC19AC1C589E5200B3920C /* HJPresentListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJPresentListView.m; sourceTree = "<group>"; };
+		30DC19AD1C589E5200B3920C /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		30DC19AE1C589E5200B3920C /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				30DC19A81C589A0500B3920C /* share.png */,
+				30DC19AA1C589E5200B3920C /* HJPresentListView */,
 				30DC19A11C58966200B3920C /* HJLinkClickedLabel */,
 				30DC198D1C58962700B3920C /* AppDelegate.h */,
 				30DC198E1C58962700B3920C /* AppDelegate.m */,
@@ -98,6 +105,17 @@
 				30DC19A61C58986100B3920C /* HJContentTextView.m */,
 			);
 			path = HJLinkClickedLabel;
+			sourceTree = "<group>";
+		};
+		30DC19AA1C589E5200B3920C /* HJPresentListView */ = {
+			isa = PBXGroup;
+			children = (
+				30DC19AB1C589E5200B3920C /* HJPresentListView.h */,
+				30DC19AC1C589E5200B3920C /* HJPresentListView.m */,
+				30DC19AD1C589E5200B3920C /* UIView+Extension.h */,
+				30DC19AE1C589E5200B3920C /* UIView+Extension.m */,
+			);
+			path = HJPresentListView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,7 +192,9 @@
 				30DC19A71C58986100B3920C /* HJContentTextView.m in Sources */,
 				30DC19921C58962700B3920C /* ViewController.m in Sources */,
 				30DC19A41C5896A100B3920C /* HJAttributeTextModel.m in Sources */,
+				30DC19B01C589E5200B3920C /* UIView+Extension.m in Sources */,
 				30DC198F1C58962700B3920C /* AppDelegate.m in Sources */,
+				30DC19AF1C589E5200B3920C /* HJPresentListView.m in Sources */,
 				30DC198C1C58962700B3920C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +344,7 @@
 				30DC19A01C58962700B3920C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -8,12 +8,26 @@
 
 #import "ViewController.h"
 #import "HJContentTextView.h"
+#import "HJPresentListView.h"
 
-@interface ViewController ()
+// 程序主窗体
+#define KeyWindow [UIApplication sharedApplication].keyWindow
 
+@interface ViewController () <HJPresentListViewDelegate>
+@property (nonatomic, strong) HJPresentListView *presentView;
 @end
 
 @implementation ViewController
+
+- (HJPresentListView *)presentView
+{
+    if (!_presentView) {
+        NSArray *titlesArr = @[@"取消",@"用Safari打开"];
+        _presentView = [[HJPresentListView alloc] initWithFrame:KeyWindow.bounds Titles:titlesArr ColorStyle:HJOrange];
+        _presentView.delegate = self;
+    }
+    return _presentView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,16 +45,33 @@
     //点击事件实现
     speciaView.clickedBlock = ^()
     {
-        NSLog(@"hahhah");
+        [self.presentView show];
     };
     [self.view addSubview:speciaView];
 
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark presentListViewDelegate
+
+- (void)PresentListView:(UIView *)presentListView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+        {
+            
+        }
+            break;
+        case 1:
+        {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.baidu.com"]];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
+
 
 @end
