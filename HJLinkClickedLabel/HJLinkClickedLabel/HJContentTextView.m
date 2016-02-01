@@ -20,7 +20,7 @@ static const NSInteger coverTag = 11;
         tv.editable = NO;
         tv.scrollEnabled = NO;
         tv.userInteractionEnabled = NO;
-        tv.backgroundColor = [UIColor greenColor];
+        tv.backgroundColor = [UIColor clearColor];
         [self addSubview:tv];
         _tv = tv;
         

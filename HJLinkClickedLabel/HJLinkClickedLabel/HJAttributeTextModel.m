@@ -8,6 +8,11 @@
 
 #import "HJAttributeTextModel.h"
 
+// 获取16进制格式
+#define kColorWithValue(value) \
+[UIColor colorWithRed:((float)((value & 0xFF0000) >> 16)) / 255.0 \
+green:((float)((value & 0xFF00) >> 8)) / 255.0 \
+blue:((float)(value & 0xFF)) / 255.0 alpha:1.0]
 @implementation HJAttributeTextModel
 
 - (NSMutableArray *)specialSegments
@@ -20,10 +25,19 @@
     
 }
 
-- (NSMutableAttributedString *)hilightClickedText:(NSString *)text HightText:(NSString *)hightText;
+- (NSMutableAttributedString *)hilightClickedText:(NSMutableString *)text HightText:(NSString *)hightText;
 {
     [self.specialSegments removeAllObjects];
     NSMutableArray *parts = [NSMutableArray array];
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)" options:NSRegularExpressionCaseInsensitive error:&error];
+    NSTextCheckingResult *urlResult = [regex firstMatchInString:text options:0 range:NSMakeRange(0, [text length])];
+    if (urlResult) {
+        self.linkUrl = [text substringWithRange:urlResult.range];
+        [text replaceCharactersInRange:urlResult.range withString:hightText];
+        
+    }
+
     if ([text rangeOfString:hightText].location != NSNotFound) {
         HJAttributeTextModel *seg = [[HJAttributeTextModel alloc] init];
         seg.text = hightText;
@@ -31,6 +45,7 @@
         seg.special = YES;
         [parts addObject:seg];
     }
+
     
     
     
@@ -41,7 +56,7 @@
     for (NSInteger i=0; i<cnt; i++) {
         HJAttributeTextModel *ts = parts[i];
         if (ts.special) {
-            [attributeText addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:ts.range];
+            [attributeText addAttribute:NSForegroundColorAttributeName value:kColorWithValue(0x2B96E8) range:ts.range];
             //生成富文本中的图片
             NSTextAttachment *attch = [[NSTextAttachment alloc] init];
             attch.image = [UIImage imageNamed:@"share"];

@@ -12,9 +12,10 @@
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, assign) NSRange range;
 @property (nonatomic, strong) NSMutableArray *specialSegments;
+@property (nonatomic, strong) NSString *linkUrl;
 @property (nonatomic, assign, getter=isSpecial) BOOL special;
 @property (nonatomic, assign, getter=isEmotion) BOOL emotion;
 
 
-- (NSMutableAttributedString *)hilightClickedText:(NSString *)text HightText:(NSString *)hightText;
+- (NSMutableAttributedString *)hilightClickedText:(NSMutableString *)text HightText:(NSString *)hightText;
 @end

@@ -12,12 +12,12 @@ typedef enum {
 } HJColorStyle;
 
 #import <UIKit/UIKit.h>
-
+@class HJPresentListView;
 @protocol HJPresentListViewDelegate <NSObject>
 
 @required
 
-- (void)PresentListView:(UIView *)presentListView clickedButtonAtIndex:(NSInteger)buttonIndex;
+- (void)PresentListView:(HJPresentListView *)presentListView clickedButtonAtIndex:(NSInteger)buttonIndex;
 
 @end
 

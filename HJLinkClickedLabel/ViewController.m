@@ -15,6 +15,7 @@
 
 @interface ViewController () <HJPresentListViewDelegate>
 @property (nonatomic, strong) HJPresentListView *presentView;
+@property (nonatomic, strong) HJAttributeTextModel *attributeTextmodel;
 @end
 
 @implementation ViewController
@@ -33,15 +34,14 @@
     [super viewDidLoad];
     
     //需要添加点击事件的文本
-    NSString *text = @"网页链接磨房网成立于2000年，哈哈哈哈哈哈，怎么样，有没有很酷哈哈哈哈";
-    
+    NSMutableString *text = [[NSMutableString alloc] initWithString:@"磨房网成立于2000年，http://www.baidu.com哈哈哈哈哈哈，怎么样，有没有很酷哈哈哈哈"];
     //实例化
-    HJAttributeTextModel *ts = [[HJAttributeTextModel alloc] init];
+    _attributeTextmodel = [[HJAttributeTextModel alloc] init];
     HJContentTextView *speciaView = [[HJContentTextView alloc] initWithFrame:CGRectMake(10, 20, 300, 200)];
     //赋值，这一步不可以少，specialSegments保存了查询到的结果
-    speciaView.specialSegments = ts.specialSegments;
+    speciaView.specialSegments = _attributeTextmodel.specialSegments;
     //设置查询文本和查询的关键字
-    speciaView.tv.attributedText = [ts hilightClickedText:text HightText:@"网页链接"];
+    speciaView.tv.attributedText = [_attributeTextmodel hilightClickedText:text HightText:@"网页链接"];
     //点击事件实现
     speciaView.clickedBlock = ^()
     {
@@ -49,12 +49,11 @@
     };
     [self.view addSubview:speciaView];
 
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 #pragma mark presentListViewDelegate
 
-- (void)PresentListView:(UIView *)presentListView clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)PresentListView:(HJPresentListView *)presentListView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch (buttonIndex) {
         case 0:
@@ -64,7 +63,8 @@
             break;
         case 1:
         {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.baidu.com"]];
+            //_attributeTextmodel.linkUrl为跳转链接
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_attributeTextmodel.linkUrl]];
         }
             break;
             
